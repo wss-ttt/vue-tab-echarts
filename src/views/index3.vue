@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <h2 class="tips">使用v-if,查看性能</h2>
     <div class="tabs">
       <button v-for="item in tabs" 
       :key="item" 
@@ -54,11 +55,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -86,11 +87,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -118,11 +119,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }

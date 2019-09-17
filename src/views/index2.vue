@@ -1,15 +1,16 @@
 <template>
   <div class="wrapper">
+    <h2 class="tips">使用v-show,查看性能</h2>
     <div class="tabs">
-      <button v-for="item in tabs" :key="item" @click="tab(item)">{{item}}</button>
+      <button v-for="item in tabs" :key="item" @click="tab(item)" :class="{'active':isShow === item}">{{item}}</button>
     </div>
     <div class="charts c1" v-show="isShow === 'c1'"></div>
     <div class="charts c2" v-show="isShow === 'c2'"></div>
     <div class="charts c3" v-show="isShow === 'c3'"></div>
   </div>
 </template>
-
 <script>
+
 import echarts from 'echarts'
 export default {
   components: {},
@@ -17,7 +18,7 @@ export default {
   data() {
     return {
       tabs: ['c1', 'c2', 'c3'],
-      isShow: 'c1'
+      isShow: 'c1',
     }
   },
   watch: {},
@@ -51,11 +52,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -83,11 +84,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -115,11 +116,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30000; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -153,5 +154,8 @@ export default {
   height: 400px;
   border: 1px solid #ccc;
   float: left;
+}
+.active{
+    background-color: #1acd7e;
 }
 </style>

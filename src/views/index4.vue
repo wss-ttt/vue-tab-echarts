@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <h2 class="tips">只改变数据,实现不同的图表</h2>
     <div class="tabs">
       <button v-for="item in tabs" :key="item" 
       @click="tab(item)" 
