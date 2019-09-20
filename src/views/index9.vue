@@ -2,7 +2,12 @@
   <div class="wrapper">
     <h2 class="tips">使用v-show,查看性能</h2>
     <div class="tabs">
-      <button v-for="item in tabs" :key="item" @click="tab(item)" :class="{'active':isShow === item}">{{item}}</button>
+      <button
+        v-for="item in tabs"
+        :key="item"
+        @click="tab(item)"
+        :class="{'active':isShow === item}"
+      >{{item}}</button>
     </div>
     <div class="charts c1" v-show="isShow === 'c1'"></div>
     <div class="charts c2" v-show="isShow === 'c2'"></div>
@@ -10,7 +15,11 @@
   </div>
 </template>
 <script>
-// 该案例存在一个bug 就是在缩放当前窗口的时候 其他tab标签页的图表又压缩了
+// index2中的问题:该案例存在一个bug 就是在缩放当前窗口的时候 其他tab标签页的图表又压缩了
+// 现在来解决index2中的问题,在渲染图表前重新复制宽度,
+// 但是现实又存在一个问题就是图表不能自适应了
+// 那如何解决该问题?
+// myChart.resize()的使用
 import echarts from 'echarts'
 export default {
   components: {},
@@ -18,11 +27,12 @@ export default {
   data() {
     return {
       tabs: ['c1', 'c2', 'c3'],
-      isShow: 'c1',
+      isShow: 'c1'
     }
   },
   watch: {},
-  computed: {},
+  computed: {
+  },
   methods: {
     tab(name) {
       this.isShow = name
@@ -46,17 +56,21 @@ export default {
       }
     },
     initChart_c1() {
+      let wrapper = document.querySelector('.wrapper')
+      let w = wrapper.offsetWidth + 'px'
       //   let myChart = null
       let box = document.querySelector('.c1')
+      box.style.width = w
+      console.log(w)
       let myChart = null
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 300; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 300; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -76,22 +90,26 @@ export default {
         ]
       }
       myChart.setOption(option)
+      myChart.resize()
       window.addEventListener('resize', () => {
         myChart.resize()
       })
     },
     initChart_c2() {
+      let wrapper = document.querySelector('.wrapper')
+      let w = wrapper.offsetWidth + 'px'
       //   let myChart = null
       let box = document.querySelector('.c2')
+      box.style.width = w
       let myChart = null
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 300; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 300; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -111,22 +129,26 @@ export default {
         ]
       }
       myChart.setOption(option)
+      myChart.resize()
       window.addEventListener('resize', () => {
         myChart.resize()
       })
     },
     initChart_c3() {
+      let wrapper = document.querySelector('.wrapper')
+      let w = wrapper.offsetWidth + 'px'
       //   let myChart = null
       let box = document.querySelector('.c3')
+      box.style.width = w
       let myChart = null
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 300; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 300; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -146,6 +168,7 @@ export default {
         ]
       }
       myChart.setOption(option)
+      myChart.resize()
       window.addEventListener('resize', () => {
         myChart.resize()
       })
@@ -154,6 +177,10 @@ export default {
   created() {},
   mounted() {
     this.tab('c1')
+    console.log(this.chartWidth)
+    window.addEventListener('resize',()=>{
+        this.tab(this.isShow)
+    })
   }
 }
 </script>
@@ -164,7 +191,7 @@ export default {
   border: 1px solid #ccc;
   float: left;
 }
-.active{
-    background-color: #1acd7e;
+.active {
+  background-color: #1acd7e;
 }
 </style>
