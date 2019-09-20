@@ -44,6 +44,9 @@ export default {
         ]
       }
       myChart.setOption(option)
+      window.addEventListener('resize', () => {
+        myChart.resize()
+      })
     }
   },
   created() {},
@@ -53,7 +56,7 @@ export default {
 }
 </script>
 <style scoped>
-.c1{
+.c1 {
   height: 400px;
   width: 100%;
 }
