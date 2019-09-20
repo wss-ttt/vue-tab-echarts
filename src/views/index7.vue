@@ -64,9 +64,9 @@ export default {
         ]
       }
       myChart.setOption(option)
-      /* window.addEventListener('resize', () => {
+      window.addEventListener('resize', () => {
         myChart.resize()
-      }) */
+      })
     },
     initChart_c2() {
       let oChart = document.querySelector('.showCharts')
@@ -75,6 +75,7 @@ export default {
       let h = '400px'
       //   let myChart = null
       let box = document.querySelector('.c2')
+      // 设置宽度
       // box.style.width = w + 'px'
       // box.style.height = h
       let myChart = null
@@ -105,9 +106,9 @@ export default {
         ]
       }
       myChart.setOption(option)
-      /* window.addEventListener('resize', () => {
+      window.addEventListener('resize', () => {
         myChart.resize()
-      }) */
+      })
     },
     initChart_c3() {
       let oChart = document.querySelector('.showCharts')
@@ -116,6 +117,7 @@ export default {
       let h = '400px'
       //   let myChart = null
       let box = document.querySelector('.c3')
+      // 设置宽度
       // box.style.width = w + 'px'
       // box.style.height = h
       let myChart = null
@@ -146,9 +148,9 @@ export default {
         ]
       }
       myChart.setOption(option)
-      /* window.addEventListener('resize', () => {
+      window.addEventListener('resize', () => {
         myChart.resize()
-      }) */
+      })
     }
   },
   created() {},
