@@ -47,7 +47,9 @@ export default {
     }
   },
   created() {},
-  mounted() {}
+  mounted() {
+    this.initChart_c3()
+  }
 }
 </script>
 <style scoped>

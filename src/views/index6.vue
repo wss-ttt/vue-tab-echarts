@@ -35,7 +35,7 @@ export default {
   methods: {
     tab(name) {
       this.isShow = name
-      switch (this.isShow) {
+      /* switch (this.isShow) {
         case 'c1':
           this.$nextTick(() => {
             this.$refs['c1'].initChart_c1()
@@ -51,7 +51,7 @@ export default {
             this.$refs['c3'].initChart_c3()
           })
           break
-      }
+      } */
     },
   },
   created() {},

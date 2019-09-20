@@ -40,6 +40,11 @@ export default new Router({
       path:'/index6',
       name:'index6',
       component:resolve=>require(['@/views/index6'],resolve)
-    }
+    },
+    {
+      path:'/index7',
+      name:'index7',
+      component:resolve=>require(['@/views/index7'],resolve)
+    },
   ]
 })
