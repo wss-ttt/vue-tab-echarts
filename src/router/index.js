@@ -72,9 +72,19 @@ export default new Router({
       component: resolve => require(['@/views/beijingMap.vue'], resolve)
     },
     {
-      path:'/beijingMap2',
+      path:'/beijingMap2', // 绘制北京市(包括其他省份) 第二种实现方法
       name:'beijingMap2',
       component: resolve => require(['@/views/beijingMap2.vue'], resolve)
+    },
+    {
+      path:'/wuhanMap',     // 绘制武汉市(包括其它市) 第一种实现方法
+      name:'wuhanMap',
+      component: resolve => require(['@/views/wuhanMap.vue'], resolve)
+    },
+    {
+      path:'/wuhanMap2',    // 绘制武汉市(包括其他市) 第二种实现方法
+      name:'wuhanMap2',
+      component: resolve => require(['@/views/wuhanMap2.vue'], resolve)
     }
   ]
 })
