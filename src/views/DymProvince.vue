@@ -9,7 +9,6 @@
 
 <script>
 import echarts from 'echarts'
-import 'echarts/lib/chart/map'
 import 'echarts/map/js/province/hubei.js'
 import 'echarts/map/js/province/hunan.js'
 import 'echarts/map/js/province/henan.js'

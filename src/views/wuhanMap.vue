@@ -8,7 +8,7 @@
 import echarts from 'echarts'
 import 'echarts/lib/chart/map'
 // 引入武汉地图的数据
-import wuhan from '@/mapData/wuhan.json'
+import wuhan from '@/mapData/武汉市.json'
 export default {
   props: {},
   data() {

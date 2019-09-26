@@ -85,6 +85,11 @@ export default new Router({
       path:'/wuhanMap2',    // 绘制武汉市(包括其他市) 第二种实现方法
       name:'wuhanMap2',
       component: resolve => require(['@/views/wuhanMap2.vue'], resolve)
+    },
+    {
+      path:'/dymProvince',
+      name:'dymProvince',
+      component: resolve => require(['@/views/dymProvince.vue'], resolve)
     }
   ]
 })
