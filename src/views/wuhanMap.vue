@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <div class="map"></div>
+    <button v-for="item in btns" @click="toggle(item.title)" :key="item.title" :class="{'active':isShow === item.title}">{{item.name}}</button>
+    <div class="map" v-if="isShow === 'map'"></div>
+    <div class="info" v-if="isShow === 'bar'"></div>
   </div>
 </template>
 
@@ -12,17 +14,39 @@ import wuhan from '@/mapData/武汉市.json'
 export default {
   props: {},
   data() {
-    return {}
+    return {
+      btns:[{
+        name:'地图',
+        title:'map'
+      },{
+        name:'柱状图',
+        title:'bar'
+      }],
+      isShow: 'map'
+    }
   },
   computed: {},
   components: {},
   created() {},
   mounted() {
-    this.initMap()
+    this.toggle(this.isShow)
   },
   destroyed() {},
   watch: {},
   methods: {
+    toggle(title){
+      this.isShow = title
+      if(title === 'map'){
+        this.$nextTick(()=>{
+          this.initMap()
+        })
+      }
+      if(title === 'bar'){
+        this.$nextTick(()=>{
+          this.initChartBar()
+        })
+      }
+    },
     initMap() {
       // 注册地图数据
       echarts.registerMap('武汉', wuhan)
@@ -72,6 +96,43 @@ export default {
       window.addEventListener('resize', () => {
         myChart.resize()
       })
+    },
+    initChartBar() {
+      let myCharts = null
+      let oBox = document.querySelector('.info')
+      myCharts = echarts.init(oBox)
+      let option = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        legend: {},
+        grid: {},
+        xAxis: [
+          {
+            type: 'category',
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value'
+          }
+        ],
+        series: [
+          {
+            data: [120, 200, 150, 80, 70, 110, 130],
+            type: 'bar'
+          }
+        ]
+      }
+      myCharts.clear()
+      myCharts.setOption(option)
+      window.addEventListener('resize', () => {
+        myCharts.resize()
+      })
     }
   }
 }
@@ -79,7 +140,14 @@ export default {
 <style scoped>
 .map {
   height: 500px;
-  background-color: #ccc;
-  margin: 50px auto;
+  background-color: red;
+}
+.info {
+  height: 500px;
+  background-color: green;
+}
+.active{
+  background-color: azure;
+  font-weight: bold;
 }
 </style>
