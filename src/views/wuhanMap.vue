@@ -71,7 +71,7 @@ export default {
               show: false
             }
           },
-          roam: true,
+          roam: true,   // 是否可以缩放地图
           itemStyle: {
             normal: {
               borderWidth: 1,
@@ -92,6 +92,7 @@ export default {
           }
         ]
       }
+      myChart.clear()
       myChart.setOption(option)
       window.addEventListener('resize', () => {
         myChart.resize()
