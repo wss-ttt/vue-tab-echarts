@@ -1,6 +1,11 @@
 <template>
   <div class="wrapper">
-    <button v-for="item in btns" @click="toggle(item.title)" :key="item.title" :class="{'active':isShow === item.title}">{{item.name}}</button>
+    <button
+      v-for="item in btns"
+      @click="toggle(item.title)"
+      :key="item.title"
+      :class="{'active':isShow === item.title}"
+    >{{item.name}}</button>
     <div class="map" v-if="isShow === 'map'"></div>
     <div class="info" v-if="isShow === 'bar'"></div>
   </div>
@@ -15,13 +20,16 @@ export default {
   props: {},
   data() {
     return {
-      btns:[{
-        name:'地图',
-        title:'map'
-      },{
-        name:'柱状图',
-        title:'bar'
-      }],
+      btns: [
+        {
+          name: '地图',
+          title: 'map'
+        },
+        {
+          name: '柱状图',
+          title: 'bar'
+        }
+      ],
       isShow: 'map'
     }
   },
@@ -34,15 +42,15 @@ export default {
   destroyed() {},
   watch: {},
   methods: {
-    toggle(title){
+    toggle(title) {
       this.isShow = title
-      if(title === 'map'){
-        this.$nextTick(()=>{
+      if (title === 'map') {
+        this.$nextTick(() => {
           this.initMap()
         })
       }
-      if(title === 'bar'){
-        this.$nextTick(()=>{
+      if (title === 'bar') {
+        this.$nextTick(() => {
           this.initChartBar()
         })
       }
@@ -58,7 +66,17 @@ export default {
           x: 'center'
         },
         tooltip: {
-          trigger: 'item'
+          formatter: function(params) {
+            let info = `<p style="font-size:16px;">用户名:${params.name}</p>
+                                        <p style="font-size:14px;">异常概率:${
+                                          params.value[2]
+                                        }`
+            return info
+          },
+          backgroundColor: 'rgba(0,0,0,.5)', //提示标签背景颜色
+          textStyle: {
+            color: '#fff'
+          } //提示标签字体颜色
         },
         geo: {
           map: '武汉',
@@ -71,29 +89,35 @@ export default {
               show: false
             }
           },
-          roam: true,   // 是否可以缩放地图
+          roam: true, // 是否可以缩放地图
           itemStyle: {
-            normal: {
-              borderWidth: 1,
-              areaColor: 'red',
-              borderColor: '#3CC3FF'
-            },
-            emphasis: {
-              areaColor: 'blue'
-            }
+            normal: {},
+            emphasis: {}
           }
         },
         series: [
           {
-            name: '年度总项目数据查询',
-            type: 'map',
-            geoIndex: 0, // 不可以缺失
-            data: []
+            type: 'scatter', // 没有阴影的圆点
+            coordinateSystem: 'geo',
+            data: [
+              {
+                name: 'aa',
+                value: [114.885646, 30.982124, 100]
+              },
+              {
+                name: 'bb',
+                value: [114.878082, 31.002104, 200]
+              }
+            ]
           }
         ]
       }
       myChart.clear()
       myChart.setOption(option)
+      // 添加单击事件
+      myChart.on('click',(params)=>{
+        console.log(params)
+      })
       window.addEventListener('resize', () => {
         myChart.resize()
       })
@@ -139,15 +163,19 @@ export default {
 }
 </script>
 <style scoped>
+*{
+  margin:0;
+  padding: 0;
+}
 .map {
-  height: 500px;
-  background-color: red;
+  height: 800px;
+  background-color: #1acd7e;
 }
 .info {
-  height: 500px;
-  background-color: green;
+  height: 800px;
+  background-color: #1acd7e;
 }
-.active{
+.active {
   background-color: azure;
   font-weight: bold;
 }

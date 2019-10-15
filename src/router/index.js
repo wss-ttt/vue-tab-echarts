@@ -90,6 +90,11 @@ export default new Router({
       path:'/dymProvince',
       name:'dymProvince',
       component: resolve => require(['@/views/dymProvince.vue'], resolve)
+    },
+    {
+      path:'/index10',
+      name:'index10',
+      component: resolve => require(['@/views/index10.vue'], resolve)
     }
   ]
 })
