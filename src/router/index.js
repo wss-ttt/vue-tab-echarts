@@ -95,6 +95,11 @@ export default new Router({
       path:'/index10',
       name:'index10',
       component: resolve => require(['@/views/index10.vue'], resolve)
+    },
+    {
+      path:'/dom',
+      name:'dom',
+      component: resolve => require(['@/views/dom.vue'], resolve)
     }
   ]
 })
