@@ -73,7 +73,10 @@ export default {
       // 这种方法是可行的
       this.lineData2 ={
         xData:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        yData:[120, 200, 150, 80, 70, 110, 130]
+        yData:[120, 200, 150, 80, 70, 110, 130],
+        title:{
+          text:'第二个折线图'
+        }
       }
 
     }
