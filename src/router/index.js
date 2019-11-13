@@ -105,6 +105,11 @@ export default new Router({
       path:'/index11',
       name:'index11',
       component: resolve => require(['@/views/index11.vue'], resolve)
+    },
+    {
+      path:'/echart',
+      name:'echart',
+      component: resolve => require(['@/views/echart.vue'], resolve)
     }
   ]
 })
