@@ -25,6 +25,9 @@ export default {
   data() {
     return {
       baseConfig: {
+        title:{
+          text:'折线图'
+        },
         xAxis: {
           type: 'category',
           //   data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -76,6 +79,7 @@ export default {
         let option = this.baseConfig
         option.xAxis.data = this.data.xData
         option.series[0].data = this.data.yData
+        option.title.text = this.data.title.text
         myChart.setOption(option)
         window.addEventListener('resize', () => {
           myChart.resize()

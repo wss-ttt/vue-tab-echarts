@@ -30,11 +30,17 @@ export default {
   mounted() {
     this.lineData1 = {
       xData: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      yData: [820, 932, 901, 934, 1290, 1330, 1320]
+      yData: [820, 932, 901, 934, 1290, 1330, 1320],
+      title:{
+        text:'第一个折线图'
+      }
     }
     this.lineData2 = {
       xData: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      yData: [820, 932, 901, 934, 1290, 1330, 1320]
+      yData: [820, 932, 901, 934, 1290, 1330, 1320],
+      title:{
+        text:'第二个折线图'
+      }
     }
     this.barData = {
       xData: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
