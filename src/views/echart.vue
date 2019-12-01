@@ -4,8 +4,6 @@
     <button @click="noData">暂无数据</button>
     <button @click="hasData">有数据</button>
     <v-line :data="lineData1" width="100%" height="300px"></v-line>
-    <v-line :data="lineData2" width="100%" height="300px"></v-line>
-    <v-bar :data="barData" width="100%" height="300px"></v-bar>
   </div>
 </template>
 
@@ -17,7 +15,6 @@ export default {
   data() {
     return {
       lineData1: {},
-      lineData2: {},
       barData: {}
     }
   },
@@ -28,57 +25,74 @@ export default {
   },
   created() {},
   mounted() {
-    this.lineData1 = {
-      xData: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      yData: [820, 932, 901, 934, 1290, 1330, 1320],
-      title:{
-        text:'第一个折线图'
-      }
-    }
-    this.lineData2 = {
-      xData: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      yData: [820, 932, 901, 934, 1290, 1330, 1320],
-      title:{
-        text:'第二个折线图'
-      }
-    }
-    this.barData = {
-      xData: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      yData: [120, 200, 150, 80, 70, 110, 130]
-    }
+    this.query()
   },
   destroyed() {},
   watch: {},
   methods: {
+    // 模拟产生随机数据(这里只有一个series 也就是只有一组数据)
     query() {
-      this.lineData1.yData = []
-      this.barData.yData = []
-      this.lineData2.yData = []
+      let series = []
+      let data = []
+      // 获取数据
       for (let i = 1; i <= 7; i++) {
         let num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
-        this.lineData1.yData.push(num)
-        this.lineData2.yData.push(num)
-        this.barData.yData.push(num)
+        data.push(num)
+      }
+      // 组装series
+      series.push({
+        type:'line',
+        data:data
+      })
+      // 组装option
+      this.lineData1 = {
+        title:{
+          text:'数据分析图'
+        },
+        xAxis:{
+          data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        series:series
       }
     },
     // 测试数据为空的情况
     noData() {
-      this.lineData2 = {}
+      this.lineData1 = {}
     },
     // 测试数据不为空的情况
     hasData() {
-      // 这种方法不行
-      /* this.lineData2.xData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      this.lineData2.yData = [120, 200, 150, 80, 70, 110, 130] */
-      // 这种方法是可行的
-      this.lineData2 ={
-        xData:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        yData:[120, 200, 150, 80, 70, 110, 130],
-        title:{
-          text:'第二个折线图'
+      // 这种方法不行(会报错)
+      /* this.lineData1.title.text = '数据分析图'
+      this.lineData1.xAxis.data = [
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat',
+        'Sun'
+      ]
+      this.lineData1.series = [
+        {
+          type: 'line',
+          data: [120, 200, 150, 80, 70, 110, 130]
         }
+      ] */
+      // 这种方法是可行的
+      this.lineData1 = {
+        title: {
+          text: '数据分析图'
+        },
+        xAxis: {
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        series: [
+          {
+            type: 'line',
+            data: [120, 200, 150, 80, 70, 110, 130]
+          }
+        ]
       }
-
     }
   }
 }
