@@ -24,25 +24,17 @@ export default {
   },
   data() {
     return {
+      // 图标基本配置
       baseConfig: {
         title:{
           text:'折线图'
         },
         xAxis: {
           type: 'category',
-          //   data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-          data: []
         },
         yAxis: {
           type: 'value'
-        },
-        series: [
-          {
-            // data: [820, 932, 901, 934, 1290, 1330, 1320],
-            data: [],
-            type: 'line'
-          }
-        ]
+        }
       },
       id: ''
     }
@@ -54,13 +46,11 @@ export default {
     this.id = id
   },
   mounted() {
-    this.initChart()
   },
   destroyed() {},
   watch: {
     data: {
       handler(newVal, oldVal) {
-        console.log('这个执行了没')
         this.initChart()
       },
       deep: true
@@ -71,15 +61,17 @@ export default {
       let oBox = document.getElementById(this.id)
       let myChart = echarts.init(oBox)
       if (this.isEmptyObject(this.data)) {
+        console.log('数据为空的情况')
         // 数据为空
         oBox.removeAttribute('_echarts_instance_')
         oBox.innerHTML = '暂无数据'
       } else {
+        console.log('数据不为空的情况')
         // 数据不为空
         let option = this.baseConfig
-        option.xAxis.data = this.data.xData
-        option.series[0].data = this.data.yData
-        option.title.text = this.data.title.text
+        option.xAxis.data = this.data.xAxis.data
+        option.title.text = this.data.title.text 
+        option.series = this.data.series
         myChart.setOption(option)
         window.addEventListener('resize', () => {
           myChart.resize()
