@@ -27,17 +27,10 @@ export default {
       baseConfig: {
         xAxis: {
           type: 'category'
-          // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
           type: 'value'
-        },
-        series: [
-          {
-            // data: [120, 200, 150, 80, 70, 110, 130],
-            type: 'bar'
-          }
-        ]
+        }
       },
       id: ''
     }
@@ -49,7 +42,8 @@ export default {
     this.id = id
   },
   mounted() {
-    this.initChart()
+    console.log('bar 页面')
+    // this.initChart()
   },
   destroyed() {},
   watch: {
@@ -64,13 +58,26 @@ export default {
     initChart() {
       let oBox = document.getElementById(this.id)
       let myChart = echarts.init(oBox)
-      let option = this.baseConfig
-      option.xAxis.data = this.data.xData
-      option.series[0].data = this.data.yData
-      myChart.setOption(option)
-      window.addEventListener('resize', () => {
-        myChart.resize()
-      })
+      if (this.isEmptyObject(this.data)) {
+        console.log('数据为空的情况')
+        // 数据为空
+        oBox.removeAttribute('_echarts_instance_')
+        oBox.innerHTML = '暂无数据'
+      } else {
+        console.log('数据不为空的情况')
+        // 数据不为空
+        let option = this.baseConfig
+        option.xAxis.data = this.data.xAxis.data
+        option.title.text = this.data.title.text 
+        option.series = this.data.series
+        myChart.setOption(option)
+        window.addEventListener('resize', () => {
+          myChart.resize()
+        })
+      }
+    },
+    isEmptyObject(obj) {
+      return Object.keys(obj).length === 0
     }
   }
 }
