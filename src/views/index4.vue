@@ -41,11 +41,11 @@ export default {
       this.current = name
       let xData = []
       let yData = []
-      for (let i = 1; i <= 5000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 5000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -91,6 +91,9 @@ export default {
         ]
       }
       myChart.setOption(option)
+      window.addEventListener('resize', () => {
+        myChart.resize()
+      })
     },
     initPie() {
       let option = {
@@ -133,6 +136,9 @@ export default {
       // 清空数据
       myChart.clear()
       myChart.setOption(option)
+      window.addEventListener('resize', () => {
+        myChart.resize()
+      })
     }
   }
 }
