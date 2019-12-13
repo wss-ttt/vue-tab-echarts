@@ -22,6 +22,16 @@ export default new Router({
       component: resolve => require(['@/views/index2'], resolve)
     },
     {
+      path: '/index2_2',
+      name: 'index2_2',
+      component: resolve => require(['@/views/index2_2'], resolve)
+    },
+    {
+      path: '/index2_3',
+      name: 'index2_3',
+      component: resolve => require(['@/views/index2_3'], resolve)
+    },
+    {
       path: '/index3',
       name: 'index3',
       component: resolve => require(['@/views/index3'], resolve)
@@ -35,6 +45,11 @@ export default new Router({
       path: '/index5',
       name: 'index5',
       component: resolve => require(['@/views/index5'], resolve)
+    },
+    {
+      path: '/index5_2',
+      name: 'index5_2',
+      component: resolve => require(['@/views/index5_2'], resolve)
     },
     {
       path: '/index6',
@@ -110,6 +125,16 @@ export default new Router({
       path:'/echart',
       name:'echart',
       component: resolve => require(['@/views/echart.vue'], resolve)
-    }
+    },
+    {
+      path:'/views2/index',
+      name:'views2-index',
+      component: resolve => require(['@/views2/index.vue'], resolve)
+    },
+    {
+      path:'/views2/test',
+      name:'views2-test',
+      component: resolve => require(['@/views2/test.vue'], resolve)
+    },
   ]
 })
