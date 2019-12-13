@@ -15,6 +15,7 @@
 </template>
 
 <script>
+// 该实现方法不会出现另一个页面改变窗口大小，再回到当前页面时，图表被压缩的问题
 import echarts from 'echarts'
 export default {
   components: {},
@@ -55,11 +56,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 30000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 30000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -79,6 +80,9 @@ export default {
         ]
       }
       myChart.setOption(option)
+      window.addEventListener('resize', () => {
+        myChart.resize()
+      })
     },
     initChart_c2() {
       //   let myChart = null
@@ -87,11 +91,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 30000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 30000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -111,6 +115,9 @@ export default {
         ]
       }
       myChart.setOption(option)
+      window.addEventListener('resize', () => {
+        myChart.resize()
+      })
     },
     initChart_c3() {
       //   let myChart = null
@@ -119,11 +126,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 30000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 30000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -143,6 +150,9 @@ export default {
         ]
       }
       myChart.setOption(option)
+      window.addEventListener('resize', () => {
+        myChart.resize()
+      })
     }
   },
   created() {},
