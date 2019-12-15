@@ -13,6 +13,7 @@
 // 该案例存在一个bug 就是在缩放当前窗口的时候 其他tab标签页的图表又压缩了
 // 对阵index2.vue页面的问题,进行解决
 // 使用echarts中的resize进行,还是会有问题,图表都被压缩了
+// 但是如果把resize放在$nextTick中,就能完美的解决问题了
 import echarts from 'echarts'
 export default {
   components: {},
@@ -34,15 +35,24 @@ export default {
       switch (this.isShow) {
         case 'c1':
             console.log('tab c1')
-            this.myChart1.resize()
+            this.$nextTick(()=>{
+
+              this.myChart1.resize()
+            })
           break
         case 'c2':
             console.log('tab c2')
-            this.myChart2.resize()
+            this.$nextTick(()=>{
+
+              this.myChart2.resize()
+            })
           break
         case 'c3':
             console.log('tab c3')
-            this.myChart3.resize()
+            this.$nextTick(()=>{
+
+              this.myChart3.resize()
+            })
           break
       }
     },
