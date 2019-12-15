@@ -36,21 +36,18 @@ export default {
         case 'c1':
             console.log('tab c1')
             this.$nextTick(()=>{
-
               this.myChart1.resize()
             })
           break
         case 'c2':
             console.log('tab c2')
             this.$nextTick(()=>{
-
               this.myChart2.resize()
             })
           break
         case 'c3':
             console.log('tab c3')
             this.$nextTick(()=>{
-
               this.myChart3.resize()
             })
           break
@@ -62,11 +59,11 @@ export default {
       this.myChart1 = echarts.init(box) */
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -95,11 +92,11 @@ export default {
       this.myChart2 = echarts.init(box) */
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -128,11 +125,11 @@ export default {
       this.myChart3 = echarts.init(box) */
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }

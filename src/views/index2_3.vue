@@ -54,11 +54,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -90,11 +90,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
@@ -126,11 +126,11 @@ export default {
       myChart = echarts.init(box)
       let xData = []
       let yData = []
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         xData.push('' + i)
       }
       // 模拟随机产生的数据
-      for (let i = 1; i <= 3000; i++) {
+      for (let i = 1; i <= 30; i++) {
         var num = Math.floor(Math.random() * (1500 - 100 + 1) + 100) // 向下取整
         yData.push(num)
       }
