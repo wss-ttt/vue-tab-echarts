@@ -31,7 +31,6 @@ export default {
           this.$nextTick(() => {
             this.initChart_c1()
           })
-          this.initChart_c1()
           break
         case 'c2':
           this.$nextTick(() => {
